@@ -1,60 +1,56 @@
-%html{lang: "ja"}
-  %head
-    %meta{charset: "utf-8"}
-  %body
-  .wrapper 
-    .chat-side
-      .side-header
-        %p.side-header__text
-          test
-        = link_to "/",class: "side-header__btn" do
-          =fa_icon 'cog'
-        = link_to "/",class: "side-header__btn" do
-          =fa_icon 'edit'
+.wrapper 
+  .chat-side
+    .side-header
+      %p.side-header__text
+        test
+      = link_to "/",class: "side-header__btn" do
+        =fa_icon 'cog'
+      = link_to "/",class: "side-header__btn" do
+        =fa_icon 'edit'
 
-      .groups
-        %p.groups__name-group
-          text-group
-        %p.groups__name-text
-          さようなら
+    .groups
+      %p.groups__name-group
+        text-group 
+      %p.groups__name-text
+        さようなら
 
-        %p.groups__name-group
-          sample-group
-        %p.groups__name-text
-          hello!
+      %p.groups__name-group
+        sample-group
+      %p.groups__name-text
+        hello!
 
-        %p.groups__name-group
-          example
-        %p.groups__name-text
-          まだメッセージがありません。
+      %p.groups__name-group
+        example
+      %p.groups__name-text
+        まだメッセージがありません。
 
-    .chat-main
-      .main-header
-        %a.main-header__btn(href="/")
-          Edit
-        %p.main-header__name-group
-          text-group
-        %p.main-header__name-member
-          Member: seo neko
-        
-      .messages
-        %p.messages__username
-          seo
-        %p.messages__post-date
-          2016/09/21 06:16:55
-        %p.messages__post-text
-          Hellow world!
+  .chat-main
+    .main-header
+      %a.main-header__btn(href="/")
+        Edit
+      %p.main-header__name-group
+        text-group
+      %p.main-header__name-member
+        Member: seo neko
+      
+    .messages
+      %p.messages__username
+        seo
+      %p.messages__post-date
+        2016/09/21 06:16:55
+      %p.messages__post-text
+        Hellow world!
 
-        %p.messages__username
-          neko
-        %p.messages__post-date
-          2016/09/21 06:16:55
-        %p.messages__post-text
-          Good bye world!
+      %p.messages__username
+        neko
+      %p.messages__post-date
+        2016/09/21 06:16:55
+      %p.messages__post-text
+        Good bye world!
 
-      .form
-        .form__box
-          %input.form__box__textbox(type="text" placeholder="  type a message")/
-          = link_to "/",class: "form__box__image-icon" do
-            =fa_icon 'image'
-          %input.form__submit(type="submit" value="Send")/
+    .form
+      .form__box
+        %input.form__box__textbox(type="text" placeholder="  type a message")/
+        = link_to "/",class: "form__box__image-icon" do
+          =fa_icon 'image'
+        %input.form__submit(type="submit" value="Send")/

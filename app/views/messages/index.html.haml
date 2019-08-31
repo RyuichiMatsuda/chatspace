@@ -33,13 +33,14 @@
       %p.messages__post-text
         Good bye world!
 
-    .form__box
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__box__textbox', placeholder: 'type a message'
-        = f.label :image, class: 'form__box__image-icon' do
-          = fa_icon 'picture-o', class: 'icon'
-          = f.file_field :image, class: 'hidden'
-        = f.submit 'Send', class: 'form__submit'
+    .form
+      .form__box
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__box__textbox', placeholder: 'type a message'
+          = f.label :image, class: 'form__box__image-icon' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'
 
     -# .form
     -#   .form__box

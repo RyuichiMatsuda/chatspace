@@ -9,33 +9,3 @@
         =fa_icon 'edit'
 
     = render 'shared/side_bar'
-  .chat-main
-    .main-header
-      %a.main-header__btn(href="/")
-        Edit
-      %p.main-header__name-group
-        text-group
-      %p.main-header__name-member
-        Member: seo neko
-      
-    .messages
-      %p.messages__username
-        seo
-      %p.messages__post-date
-        2016/09/21 06:16:55
-      %p.messages__post-text
-        Hellow world!
-
-      %p.messages__username
-        neko
-      %p.messages__post-date
-        2016/09/21 06:16:55
-      %p.messages__post-text
-        Good bye world!
-
-    .form
-      .form__box
-        %input.form__box__textbox(type="text" placeholder="  type a message")/
-        = link_to "/",class: "form__box__image-icon" do
-          =fa_icon 'image'
-        %input.form__submit(type="submit" value="Send")/

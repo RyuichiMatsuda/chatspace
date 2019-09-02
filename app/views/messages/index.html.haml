@@ -1,0 +1,38 @@
+.wrapper 
+  .chat-side
+    .side-header
+      %p.side-header__text
+        = current_user.name
+      = link_to edit_user_path(current_user) ,class: "side-header__btn" do
+        =fa_icon 'cog'
+      = link_to new_group_path ,class: "side-header__btn" do
+        =fa_icon 'edit'
+
+    = render 'shared/side_bar'
+  .chat-main
+    .main-header
+      %a.main-header__btn(href="/")
+        Edit
+      %p.main-header__name-group
+        text-group
+      %p.main-header__name-member
+        Member: seo neko
+      
+    .messages
+      = render @messages
+
+    .form
+      .form__box
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__box__textbox', placeholder: 'type a message'
+          = f.label :image, class: 'form__box__image-icon' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'
+
+    -# .form
+    -#   .form__box
+    -#     %input.form__box__textbox(type="text" placeholder="  type a message")/
+    -#     = link_to "/",class: "form__box__image-icon" do
+    -#       =fa_icon 'image'
+    -#     %input.form__submit(type="submit" value="Send")/

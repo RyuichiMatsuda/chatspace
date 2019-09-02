@@ -127,14 +127,8 @@
     width: calc(100% - 120px);
     top:20px;
   }
-  &__image-icon{
-    position: absolute;
-    top:30px;
-    float: right;
-    right: 130px;
-    color:black;
-    font-size:20px;
-  }
+  
+  
   .form__submit{
     position: absolute;
     right: 5px;
@@ -148,4 +142,16 @@
     line-height   : 1em;
 }
 }
+.icon{
+    position: absolute;
+    top:38px;
+    float: right;
+    right: 130px;
+    color:black;
+    font-size:20px;
+    
+}
 
+.hidden{
+  visibility: hidden;
+}

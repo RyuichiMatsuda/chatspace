@@ -5,7 +5,7 @@ $(function () {
         ${message.user_name}
         </p>
         <p class="messages__post-date">
-        ${message.data}
+        ${message.date}
         </p>
         <p class="messages__post-text">
         ${message.content}

@@ -1,8 +1,17 @@
 $(function () {
   function buildMessage(message) {
-    var html = `<p class="messages__post-text">
-                ${message.content}
-                </p>`
+    var html = `<div class="message">
+        <p class="messages__username">
+        ${message.user_name}
+        </p>
+        <p class="messages__post-date">
+        ${message.data}
+        </p>
+        <p class="messages__post-text">
+        ${message.content}
+        </p>
+
+</div>`
     return html
   }
 
@@ -24,6 +33,9 @@ $(function () {
       })
       .fail(function () {
       
-    })
+      })
+      .always(() => {
+        $(".form__submit").removeAttr("disabled");
+      });
   })
 });

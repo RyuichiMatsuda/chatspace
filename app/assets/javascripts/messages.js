@@ -1,6 +1,7 @@
 $(function () {
   function buildMessage(message) {
-    var html = `<div class="message">
+    image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >` : "";
+    var html = `<div class="message"></div>
         <p class="messages__username">
         ${message.user_name}
         </p>
@@ -10,6 +11,7 @@ $(function () {
         <p class="messages__post-text">
         ${message.content}
         </p>
+        ${image}
 
 </div>`
     return html
@@ -32,7 +34,7 @@ $(function () {
         $('.messages').append(html)
       })
       .fail(function () {
-      
+        alert('メッセージを入力してください')
       })
       .always(() => {
         $(".form__submit").removeAttr("disabled");

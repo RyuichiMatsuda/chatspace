@@ -90,6 +90,7 @@
   background-color: #fafafa;
   height: calc(100% - 190px);
   padding:0 40px;
+  overflow: scroll;
 
   &__username{
     color: #434A54;

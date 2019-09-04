@@ -12,5 +12,12 @@ $(function () {
       processData: false,
       contentType: false
     })
+      .done(function (message) {
+        console.log(message.content);
+      
+      })
+      .fail(function () {
+      
+    })
   })
 });

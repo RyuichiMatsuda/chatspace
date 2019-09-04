@@ -1,4 +1,10 @@
 $(function () {
+  function buildMessage(message) {
+    var html = `<p class="messages__post-text">
+                ${message.content}
+                </p>`
+    return html
+  }
 
   $("#new_message").on('submit', function (e) {
     e.preventDefault();
@@ -13,8 +19,8 @@ $(function () {
       contentType: false
     })
       .done(function (message) {
-        console.log(message.content);
-      
+        var html = buildMessage(message);
+        $('.messages').append(html)
       })
       .fail(function () {
       

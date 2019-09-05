@@ -11,9 +11,8 @@ $(function () {
         <p class="messages__post-text">
         ${message.content}
         </p>
-        ${image}
-
-</div>`
+          ${image}
+        </div>`
     return html
   }
 

@@ -11,12 +11,12 @@
     = render 'shared/side_bar'
   .chat-main
     .main-header
-      %a.main-header__btn(href="/")
-        Edit
+      = link_to "Edit", edit_group_path(params[:group_id]), method: :get,class:  "main-header__btn"
       %p.main-header__name-group
         text-group
       %p.main-header__name-member
-        Member: seo neko
+        - @members.each do |member|
+          = member.name
       
     .messages
       = render @messages

@@ -3,7 +3,7 @@ $(function() {
   var search_list = $("#user-search-result");
   var member_list = $(".chat-group-user__name");
 
-  function appendUserToSearchList(user) {
+  function appendUserToSearch(user) {
     var html = 
       `<div class="chat-group-user clearfix">
           <p class="chat-group-user__name">${ user.name }</p>
@@ -13,7 +13,7 @@ $(function() {
 　　 return html;
    }
 
-  function appendUserToMemberList(name, user_id) {
+  function appendUser(name, user_id) {
     var html = 
       `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
         <input name='group[user_ids][]' type='hidden' value=${ user_id }>
@@ -23,7 +23,7 @@ $(function() {
 　　 member_list.append(html);
   }
 
-  function appendNoUserToSearchList(user) {
+  function appendNoUser(user) {
     var html = 
       `<div class="chat-group-user clearfix">
         <p class="chat-group-user__name">${ user }</p>
@@ -46,11 +46,11 @@ $(function() {
         $("#user-search-result").empty();
           if (user.length !== 0) {
             user.forEach(function(user){
-            appendUserToSearchList(user);
+            appendUserToSearch(user);
             });
           }
           else {
-            appendNoUserToSearchList("一致するユーザーはいません");
+            appendNoUser("一致するユーザーはいません");
           }
         })
       .fail(function() {
@@ -63,7 +63,7 @@ $(function() {
         var name = $(this).attr("data-user-name");
         var user_id = $(this).attr("data-user-id");
         $(this).parent().remove();
-        appendUserToMemberList(name, user_id);
+        appendUser(name, user_id);
       });
 
 　    $(document).on("click", '.user-search-remove', function() {

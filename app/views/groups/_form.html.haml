@@ -32,7 +32,16 @@
     #chat-group-users
       #chat-group-user-22.chat-group-user.clearfix
         %input{:name => "chat_group[user_ids][]", :type => "hidden", :value => "22"}
-        %p.chat-group-user__name
+          %p.chat-group-user__name
+          = current_user.name
+        -# - @group.users.each do |u|
+        -#   - unless u == current_user
+        -#     .chat-group-user.clearfix{'data-id': current_user.id,id: "user_#{u.id}"}
+        -#       = hidden_field_tag 'group[user_ids][]', u.id
+        -#       %p.chat-group-user__name
+        -#         = u.name
+        -#       %a.user-remove.chat-group-user__btn.chat-group-user__btn--remove{"data-id": u.id, "data-name": u.name}
+        -#         削除
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left

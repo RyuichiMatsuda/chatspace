@@ -11,13 +11,14 @@
     = render 'shared/side_bar'
   .chat-main
     .main-header
-      %a.main-header__btn(href="/")
-        Edit
+      = link_to "Edit", edit_group_path(params[:group_id]), method: :get,class:  "main-header__btn"
       %p.main-header__name-group
         text-group
       %p.main-header__name-member
-        Member: seo neko
-      
+        member:
+        - @members.each do |member|
+          = member.name
+
     .messages
       = render @messages
 
@@ -29,10 +30,3 @@
             = fa_icon 'picture-o', class: 'icon'
             = f.file_field :image, class: 'hidden'
           = f.submit 'Send', class: 'form__submit'
-
-    -# .form
-    -#   .form__box
-    -#     %input.form__box__textbox(type="text" placeholder="  type a message")/
-    -#     = link_to "/",class: "form__box__image-icon" do
-    -#       =fa_icon 'image'
-    -#     %input.form__submit(type="submit" value="Send")/

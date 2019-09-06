@@ -1,5 +1,8 @@
 $(function () {
-  
+
+  var search_list = $("#user-search-result");
+  var member_list = $(".chat-group-user__name");
+
   function appendUserToSearch(user) {
     var html =
       `<div class="chat-group-user clearfix">
@@ -9,12 +12,28 @@ $(function () {
     search_list.append(html);
     return html;
   }
-  
+
+  function appendUser(name, user_id) {
+    var html =
+      `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+        <input name='group[user_ids][]' type='hidden' value=${ user_id}>
+        <p class='chat-group-user__name'>${ name}</p>
+        <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+        </div>`
+    member_list.append(html);
+  }
+
+  function appendNoUser(user) {
+    var html =
+      `<div class="chat-group-user clearfix">
+        <p class="chat-group-user__name">${ user}</p>
+      </div>`
+    search_list.append(html);
+  }
+
   $(function () {
-    // ここでテキスト打つと発火するようにしている
     $("#user-search-field").on("keyup", function () {
       var input = $("#user-search-field").val();
-
 
       $.ajax({
         type: 'GET',
@@ -22,8 +41,9 @@ $(function () {
         data: { keyword: input },
         dataType: 'json'
       })
-        .done(function () {
-          $("#user-search-field").empty();
+
+        .done(function (user) {
+          $("#user-search-result").empty();
           if (user.length !== 0) {
             user.forEach(function (user) {
               appendUserToSearch(user);
@@ -34,8 +54,21 @@ $(function () {
           }
         })
         .fail(function () {
-        alert('ユーザー検索に失敗しました');
-      })
-    })
+          alert('ユーザー検索に失敗しました');
+        })
+    });
+
+    $(function () {
+      $(document).on('click', '.user-search-add', function () {
+        var name = $(this).attr("data-user-name");
+        var user_id = $(this).attr("data-user-id");
+        $(this).parent().remove();
+        appendUser(name, user_id);
+      });
+
+      $(document).on("click", '.user-search-remove', function () {
+        $(this).parent().remove();
+      });
+    });
   });
 });

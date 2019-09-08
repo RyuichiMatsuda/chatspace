@@ -34,6 +34,7 @@ $(function () {
       .done(function (message) {
         var html = buildMessage(message);
         $('.messages').append(html)
+        $('.form__box__textbox').val('');
       })
       .fail(function () {
         alert('メッセージを入力してください')

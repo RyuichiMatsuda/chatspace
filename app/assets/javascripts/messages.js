@@ -1,7 +1,7 @@
 $(function () {
   function buildMessage(message) {
     image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >` : "";
-    var html = `<div class="message"></div>
+    var html = `<div class="message data-id="${message.id}"></div>
         <p class="messages__username">
         ${message.user_name}
         </p>
@@ -41,3 +41,23 @@ $(function () {
       });
   })
 });
+
+var reloadMessages = function () {
+  //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
+  last_message_id = $('.message:last').data("id");
+  $.ajax({
+    //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
+    url: `api/messages`,
+    //ルーティングで設定した通りhttpメソッドをgetに指定
+    type: 'get',
+    dataType: 'json',
+    //dataオプションでリクエストに値を含める
+    data: { id: last_message_id }
+  })
+    .done(function (messages) {
+      console.log('success');
+    })
+    .fail(function () {
+      console.log('error');
+    });
+};

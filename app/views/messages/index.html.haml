@@ -13,7 +13,7 @@
     .main-header
       = link_to "Edit", edit_group_path(params[:group_id]), method: :get,class:  "main-header__btn"
       %p.main-header__name-group
-        text-group
+        #{@group.name}
       %p.main-header__name-member
         member:
         - @members.each do |member|

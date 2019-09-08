@@ -56,7 +56,7 @@ $(function () {
         data: { last_id: last_message_id }
       })
         .done(function (messages) {
-          var insertHTML = '';//追加するHTMLの入れ物を作る
+          var insertHTML = '';
           messages.forEach(function (message) {
             insertHTML = buildMessage(message);
             $('.messages').append(insertHTML);

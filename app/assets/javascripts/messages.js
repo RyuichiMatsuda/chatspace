@@ -56,7 +56,15 @@ var reloadMessages = function () {
     data: { id: last_message_id }
   })
     .done(function (messages) {
-      console.log('success');
+      var insertHTML = '';
+      //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+      messages.forEach(function (message) {
+        insertHTML = buildHTML(message); 
+        $('.message').append(insertHTML);
+      //メッセージが入ったHTMLを取得
+        
+      //メッセージを追加
+      })
     })
     .fail(function () {
       console.log('error');

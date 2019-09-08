@@ -1,5 +1,6 @@
 $(function () {
   function buildMessage(message) {
+    text = message.text ? `${message.text}` : "";
     image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >` : "";
     var html = `<div class="message data-id="${message.id}"></div>
         <p class="messages__username">
@@ -9,7 +10,7 @@ $(function () {
         ${message.date}
         </p>
         <p class="messages__post-text">
-        ${message.content}
+        ${text}
         </p>
         ${image}
 

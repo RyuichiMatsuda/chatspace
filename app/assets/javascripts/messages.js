@@ -1,7 +1,7 @@
 $(function () {
   function buildMessage(message) {
-    text = message.text ? `${message.text}` : "";
-    image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >` : "";
+    var text = message.content ? `${message.content}` : "";
+    var image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >` : "";
     var html = `<div class="message data-id="${message.id}"></div>
         <p class="messages__username">
         ${message.user_name}
@@ -65,6 +65,7 @@ var reloadMessages = function () {
         
       //メッセージを追加
       })
+      $('.message').animate({ scrollTop: $('.message')[0].scrollHeight }, 'fast');
     })
     .fail(function () {
       console.log('error');

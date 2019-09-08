@@ -2,7 +2,8 @@ $(function () {
   function buildMessage(message) {
     var text = message.content ? `${message.content}` : "";
     var image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >` : "";
-    var html = `<div class="message data-id="${message.id}"></div>
+
+    var html = `<div class="message" data-id="${message.id}"></div>
         <p class="messages__username">
         ${message.user_name}
         </p>
@@ -14,7 +15,7 @@ $(function () {
         </p>
         ${image}
 
-</div>`
+    </div>`
     return html
   }
 
@@ -41,34 +42,30 @@ $(function () {
         $(".form__submit").removeAttr("disabled");
       });
   })
-});
 
-var reloadMessages = function () {
-  //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-  last_message_id = $('.message:last').data("id");
-  $.ajax({
-    //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
-    url: `api/messages`,
-    //ルーティングで設定した通りhttpメソッドをgetに指定
-    type: 'get',
-    dataType: 'json',
-    //dataオプションでリクエストに値を含める
-    data: { id: last_message_id }
-  })
-    .done(function (messages) {
-      var insertHTML = '';
-      //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
-      messages.forEach(function (message) {
-        insertHTML = buildHTML(message); 
-        $('.message').append(insertHTML);
-      //メッセージが入ったHTMLを取得
-        
-      //メッセージを追加
+
+  var reloadMessages = function () {
+    var url = location.href;
+    if (url.match(/\/groups\/\d+\/messages/)) {
+      var last_message_id = $('.message:last').data("id");
+      $.ajax({
+        url: "api/messages",
+        type: 'get',
+        dataType: 'json',
+        data: { last_id: last_message_id }
       })
-      $('.message').animate({ scrollTop: $('.message')[0].scrollHeight }, 'fast');
-    })
-    .fail(function () {
-      console.log('error');
-    });
+        .done(function (messages) {
+          var insertHTML = '';//追加するHTMLの入れ物を作る
+          messages.forEach(function (message) {
+            insertHTML = buildMessage(message);
+            $('.messages').append(insertHTML);
+          })
+          $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight }, 'fast');
+        })
+        .fail(function () {
+          alert('自動更新に失敗しました');
+        });
+    }
+  };
   setInterval(reloadMessages, 5000);
-};
+});

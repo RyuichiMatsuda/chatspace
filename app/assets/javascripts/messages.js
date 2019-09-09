@@ -35,6 +35,7 @@ $(function () {
         var html = buildMessage(message);
         $('.messages').append(html)
         $('.form__box__textbox').val('');
+        $('#message_image').val('');
       })
       .fail(function () {
         alert('メッセージを入力してください')

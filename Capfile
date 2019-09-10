@@ -1,4 +1,4 @@
-@ -1,39 +1,9 @@
+
 # Load DSL and set up stages
 require "capistrano/setup"
 

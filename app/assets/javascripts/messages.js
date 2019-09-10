@@ -2,6 +2,7 @@ $(function () {
   function buildMessage(message) {
     var text = message.content ? `${message.content}` : "";
     var image = (message.image_url) ? `<img class= "lower-message__image" src=${message.image_url} >` : "";
+
     var html = `<div class="message" data-id="${message.id}"></div>
         <p class="messages__username">
         ${message.user_name}
@@ -31,9 +32,9 @@ $(function () {
     })
       .done(function (message) {
         var html = buildMessage(message);
-        console.log(message.image_url);
         $('.messages').append(html)
         $('.form__box__textbox').val('');
+        $('#message_image').val('');
       })
       .fail(function () {
         alert('メッセージを入力してください')
@@ -55,12 +56,13 @@ $(function () {
         data: { id: last_message_id }
       })
         .done(function (messages) {
+
           var insertHTML = '';
           messages.forEach(function (message) {
             insertHTML = buildMessage(message);
             $('.messages').append(insertHTML);
           })
-          $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight });
+          $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight }, 'fast');
         })
         .fail(function () {
           alert('自動更新に失敗しました');

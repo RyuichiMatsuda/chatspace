@@ -35,6 +35,7 @@ $(function () {
         $('.messages').append(html)
         $('.form__box__textbox').val('');
         $('#message_image').val('');
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight }, 'fast');
       })
       .fail(function () {
         alert('メッセージを入力してください')

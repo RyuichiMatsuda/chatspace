@@ -1,7 +1,7 @@
 $(function () {
   function buildMessage(message) {
     var text = message.content ? `${message.content}` : "";
-    var image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >` : "";
+    var image = (message.image_url) ? `<img class= "lower-message__image" src=${message.image_url} >` : "";
     var html = `<div class="message" data-id="${message.id}"></div>
         <p class="messages__username">
         ${message.user_name}
@@ -31,6 +31,7 @@ $(function () {
     })
       .done(function (message) {
         var html = buildMessage(message);
+        console.log(message.image_url);
         $('.messages').append(html)
         $('.form__box__textbox').val('');
       })

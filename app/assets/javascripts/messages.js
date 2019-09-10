@@ -60,7 +60,7 @@ $(function () {
             insertHTML = buildMessage(message);
             $('.messages').append(insertHTML);
           })
-          $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight }, 'fast');
+          $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight });
         })
         .fail(function () {
           alert('自動更新に失敗しました');

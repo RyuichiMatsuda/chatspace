@@ -3,7 +3,7 @@ $(function () {
     var text = message.content ? `${message.content}` : "";
     var image = (message.image_url) ? `<img class= "lower-message__image" src=${message.image_url} >` : "";
 
-    var html = `<div class="message" data-id="${message.id}"></div>
+    var html = `<div class="message" data-id="${message.id}">
         <p class="messages__username">
         ${message.user_name}
         </p>
@@ -61,6 +61,7 @@ $(function () {
           messages.forEach(function (message) {
             insertHTML = buildMessage(message);
             $('.messages').append(insertHTML);
+            
           })
           $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight }, 'fast');
         })
@@ -69,5 +70,5 @@ $(function () {
         });
     }
   };
-  setInterval(reloadMessages, 5000);
+  // setInterval(reloadMessages, 5000);
 });

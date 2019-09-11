@@ -14,7 +14,7 @@ color: black;
   background-color: #253141;
   width: 300px;
   height: 100%;
-  overflow: scroll;
+  
 }
 
 .side-header{
@@ -40,7 +40,11 @@ color: black;
 .groups{
   background-color: #2f3e51;
   height: calc(100% - 100px);
+  width: 100%;
   padding:0px 20px;
+  margin: 0;
+  overflow: scroll;
+  
 
   &__name-group{
     color: #ffffff;

@@ -13,13 +13,13 @@ $(function () {
   function appendUser(name, user_id) {
     var html =
       
-      `<div class="chat-group-users js-add-user">
+      `
       <div class='chat-group-user'>
       <input name='group[user_ids][]' type='hidden' value='${user_id}'>
       <p class='chat-group-user__name'>${name}</p>
       <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</>
       </div>
-      </div>`
+      `
     $(".js-add-user").append(html);
   }
 
